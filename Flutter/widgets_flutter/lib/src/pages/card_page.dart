@@ -21,7 +21,9 @@ class CardPage extends StatelessWidget {
     );
   }
   Widget _cardTipo1() {
-    return Card(
+    return Card(      
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -53,11 +55,18 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo2() {
     
-    return Card(
+    final card = Container(
+      //clipBehavior: Clip.antiAlias,
+
       child: Column(
         children: <Widget>[
           
-          
+          FadeInImage(
+            image: NetworkImage('https://todosignificados.com/wp-content/uploads/2019/06/0c6a3ba5a4d68f0c09a1498ef85b16e5-1.jpg'),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fadeInDuration: Duration(milliseconds: 200),
+            fit: BoxFit.cover,
+          ),
           //Image(
           //  image: NetworkImage('https://todosignificados.com/wp-content/uploads/2019/06/0c6a3ba5a4d68f0c09a1498ef85b16e5-1.jpg'),
           //),
@@ -66,6 +75,26 @@ class CardPage extends StatelessWidget {
             child: Text('Hay paja chavales!!!!')
           )
         ],
+      ),
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color:Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 10.0)
+          )
+        ]
+        
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: card,
       ),
     );
   }
