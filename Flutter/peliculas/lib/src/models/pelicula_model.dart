@@ -16,6 +16,8 @@ class Peliculas{
 }
 
 class Pelicula {
+  String uniqueId;
+
   double popularity;
   int voteCount;
   bool video;
@@ -75,6 +77,17 @@ class Pelicula {
     else
     {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
+
+  getBackgroundImg(){
+    if(posterPath == null)
+    {
+      return 'https://thumbs.dreamstime.com/b/no-internet-connection-offline-error-web-page-not-loading-black-dinosaur-vector-illustration-119559692.jpg';
+    }
+    else
+    {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     }
   }
 }
