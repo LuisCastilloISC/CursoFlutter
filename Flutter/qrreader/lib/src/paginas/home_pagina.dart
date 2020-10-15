@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:qrreader/src/models/scan_model.dart';
 import 'package:qrreader/src/paginas/direcciones_pagina.dart';
 import 'package:qrreader/src/paginas/mapas_pagina.dart';
-import 'package:barcode_scan/barcode_scan.dart';
+//import 'package:barcode_scan/barcode_scan.dart';
+import 'package:qrreader/src/providers/db_provider.dart';
 
 class HomePage extends StatefulWidget {
   
@@ -37,18 +39,15 @@ class _HomePageState extends State<HomePage> {
   }
   
   scanQR() async {
+    //https://www.facebook.com/
     //https://image.winudf.com/v2/image/Y29tLnRvbS5KaWdpZGlKaWdzYXdQdXp6bGVzMl9zY3JlZW5fMl9xNGRyMW4zOA/screen-2.jpg?fakeurl=1&type=.jpg
     //geo:27.463041405904587,-99.56563368281253
 
-    String futureString = '';
-    try{
-      futureString = await BarcodeScanner.scan();
-    }catch(e){
-      futureString = e.toString();
-    }
-    print('Future String: $futureString');
+    String futureString = 'https://www.facebook.com/';
+    
     if(futureString != null){
-      print('Tenemos Informacion');
+      final scan = ScanModel(valor: futureString);
+      DBProvider.db.nuevoScan(scan);
     }
   }
   
