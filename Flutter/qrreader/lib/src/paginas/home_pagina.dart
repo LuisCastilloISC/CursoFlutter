@@ -35,24 +35,23 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
+  
   scanQR() async {
-     
-    dynamic futureString ='';
-     
-    try {
+    //https://image.winudf.com/v2/image/Y29tLnRvbS5KaWdpZGlKaWdzYXdQdXp6bGVzMl9zY3JlZW5fMl9xNGRyMW4zOA/screen-2.jpg?fakeurl=1&type=.jpg
+    //geo:27.463041405904587,-99.56563368281253
+
+    String futureString = '';
+    try{
       futureString = await BarcodeScanner.scan();
     }catch(e){
-      futureString=e.toString();
+      futureString = e.toString();
     }
-     
-    print('Future String: ${futureString.rawContent}');
-    if (futureString != null){
-      print('Tenemos informacion');
+    print('Future String: $futureString');
+    if(futureString != null){
+      print('Tenemos Informacion');
     }
   }
-
-
+  
   Widget _callPage(int paginaActual){
      switch(paginaActual){
        case 0: return MapaPage();
