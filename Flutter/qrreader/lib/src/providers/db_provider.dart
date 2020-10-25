@@ -54,7 +54,7 @@ class DBProvider{
   //Esta es mas segura y corta.
   nuevoScan(ScanModel nuevoScan) async {
     final db = await database;
-    final res = await db.insert('Scans', nuevoScan.toJson());
+    final res = db.insert('Scans', nuevoScan.toJson());
     return res;
   }
 
